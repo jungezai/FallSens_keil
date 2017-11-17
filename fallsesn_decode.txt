@@ -1,0 +1,30 @@
+fallsens BLE Protocol
+====================
+
+1. Peripheral local name is "CFX_FALLSENS"
+2. Peripheral Service UUID: 00001809-0000-1000-8000-00805f9b34fb
+   - Connectable
+
+3. Peripheral Characteristics UUID: 00002A1C-0000-1000-8000-00805f9b34fb
+   - Support notification
+
+4. Notification data format (totally 13 bytes):
+   data (byte): 0 1 2 3 4 5 6 ... (12)
+   byte 0:         flag
+   byte 1 ~ (12): data payload
+
+   ALL in IEEE-11073 32-bit Float format
+
+
+   BYTE 1~4 is the X orientation acceleration
+
+
+
+   BYTE 5~8 is the Y orientation acceleration
+
+
+
+   BYTE 9~12 is the Z orientation acceleration
+
+
+   The code in fallsens_app / app / src / main / java / no / nordicsemi / android / nrftoolbox / hts / HTSManager.java is how to extract data
